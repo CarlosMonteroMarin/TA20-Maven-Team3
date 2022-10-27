@@ -1,63 +1,44 @@
 package Proyectos_TA20.Proyectos_TA20.Ejercicio4;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
+import javax.swing.JTextArea;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import javax.swing.JTextArea;
 import java.awt.event.WindowFocusListener;
 import java.awt.event.WindowStateListener;
 
-public class Ejercicio4 {
-
-	private JFrame frame;
+public class Ejercicio4 extends JFrame {
 
 	/**
-	 * Launch the application.
+	 * 
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Ejercicio4 window = new Ejercicio4();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
 
 	/**
-	 * Create the application.
+	 * Create the frame.
 	 */
 	public Ejercicio4() {
-		initialize();
-	}
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Eventos");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(20, 121, 71, 14);
-		frame.getContentPane().add(lblNewLabel);
+		lblNewLabel.setBounds(10, 128, 54, 14);
+		contentPane.add(lblNewLabel);
 		
 		JTextArea textArea = new JTextArea();
-		textArea.setBounds(127, 24, 285, 213);
-		frame.getContentPane().add(textArea);
+		textArea.setBounds(71, 11, 353, 239);
+		contentPane.add(textArea);
 		
-		frame.addWindowListener(new WindowAdapter() {
+		addWindowListener(new WindowAdapter() {
 			public void windowOpened(WindowEvent e) {
 				textArea.append("Ventana creada\n");
 			}
@@ -72,7 +53,7 @@ public class Ejercicio4 {
 			}
 		});
 		
-		frame.addWindowFocusListener(new WindowFocusListener() {
+		addWindowFocusListener(new WindowFocusListener() {
 			public void windowGainedFocus(WindowEvent e) {
 				textArea.append("Ventana en primer plano\n");
 			}
@@ -81,10 +62,12 @@ public class Ejercicio4 {
 			}
 		});
 		
-		frame.addWindowStateListener(new WindowStateListener() {
+		addWindowStateListener(new WindowStateListener() {
 			public void windowStateChanged(WindowEvent e) {
 				textArea.append("Estado de ventana cambiado\n");
 			}
 		});
+		
 	}
+
 }
